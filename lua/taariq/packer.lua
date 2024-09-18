@@ -30,6 +30,9 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
      requires = { {'nvim-lua/plenary.nvim'} }
   }
+
+	use {"windwp/nvim-autopairs"} 
+
   use({
 	"L3MON4D3/LuaSnip",
 	-- follow latest release.
@@ -40,5 +43,7 @@ return require('packer').startup(function(use)
 
 	use ({'lervag/vimtex', tag = 'v2.15'})
 	use ({"micangl/cmp-vimtex", requires = {{'lervag/vimtex'}}})
+	
 
 end)
+
