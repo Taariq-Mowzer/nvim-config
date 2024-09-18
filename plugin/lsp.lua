@@ -45,6 +45,7 @@ require('mason-lspconfig').setup({
 })
 
 local cmp = require('cmp')
+local luasnip = require('luasnip')
 
 cmp.setup({
   sources = {
@@ -54,32 +55,46 @@ cmp.setup({
   },
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+     luasnip.lsp_expand(args.body)
     end,
   },
   window = {
 	  completion = cmp.config.window.bordered(),
 	  documentation= cmp.config.window.bordered(),
-	  hover = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
+	 ['<CR>'] = cmp.mapping(function(fallback)
+        if luasnip.expandable() then
+        	luasnip.expand()
+		elseif cmp.visible() then
+            cmp.confirm({
+                select = true,
+            })
+        else
+            fallback()
+        end
+    end),
+
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item()  -- Use Tab to select the next item in the completion menu
+        cmp.select_next_item()
+      elseif luasnip.locally_jumpable(1) then
+        luasnip.jump(1)
       else
-        fallback()  -- Use Tab for normal behavior if no completion menu is visible
+        fallback()
       end
-    end, { "i", "s" }),  -- Modes where this mapping is active
+    end, { "i", "s" }),
+
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_prev_item()  -- Use Shift+Tab to select the previous item in the completion menu
+        cmp.select_prev_item()
+      elseif luasnip.locally_jumpable(-1) then
+        luasnip.jump(-1)
       else
-        fallback()  -- Use Shift+Tab for normal behavior if no completion menu is visible
+        fallback()
       end
-    end, { "i", "s" }),  -- Modes where this mapping is active
-    ["<C-Space>"] = cmp.mapping.complete(),  -- Trigger completion
-    ["<C-e>"] = cmp.mapping.abort(),         -- Close completion menu
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),  -- Confirm selection
+    end, { "i", "s" }), 
+   ["<C-e>"] = cmp.mapping.abort(),         -- Close completion menu
   }),
 })
 
