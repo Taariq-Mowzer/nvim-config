@@ -35,7 +35,7 @@ tex_utils.in_tikz = function()  -- TikZ picture environment detection
 end
 
 
-return {
+return {	
 -- Examples of Greek letter snippets, autotriggered for efficiency
 	snippet({trig=";a", snippetType="autosnippet"},
   {
@@ -72,7 +72,7 @@ return {
 			condition = tex_utils.in_text,
 		}
 	),
-	snippet({trig="im"},
+	snippet({trig="$$", snippetType="autosnippet"},
   		fmta("\\(<>\\)<>",
     		{
 				i(1),
