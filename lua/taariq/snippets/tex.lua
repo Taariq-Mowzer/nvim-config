@@ -67,9 +67,34 @@ return {
     		{
 				i(1),
     		}
-  		)
+  		),
+		{
+			condition = tex_utils.in_text,
+		}
 	),
-
+	snippet({trig="im"},
+  		fmta("\\(<>\\)<>",
+    		{
+				i(1),
+				i(2),
+    		}
+  		),
+		{
+			condition = tex_utils.in_text,
+		}
+	),
+	snippet({trig="::"},
+  		fmta("{{c<>:: <> }}<>",
+    		{
+				i(1),
+				i(2),
+				i(3),
+    		}
+  		),
+		{
+			condition = tex_utils.in_text,
+		}
+	),
 
 	snippet({trig="\\i"},
   {
