@@ -25,7 +25,7 @@ lsp_zero.extend_lspconfig({
 
 local lsp_configs = {
 	basedpyright = { settings = { basedpyright = {
-		analysis = {autoImportCompletions = false },
+		analysis = {autoImportCompletions = false, typeCheckingMode = 'standard' },
 	}}},
 }
 
