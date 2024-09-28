@@ -76,11 +76,10 @@ return {
   		fmta("\\(<>\\)<>",
     		{
 				i(1),
-				i(2),
+				i(0),
     		}
   		),
 		{
-			condition = tex_utils.in_text,
 		}
 	),
 	snippet({trig="::"},
