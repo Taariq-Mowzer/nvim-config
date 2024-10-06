@@ -25,6 +25,5 @@ return {
 	auto_pair("(", ")"),
 	auto_pair("[", "]"),
 	auto_pair("{", "}"),
-	auto_pair("'", "'"),
 	auto_pair('"', '"'),
 }
