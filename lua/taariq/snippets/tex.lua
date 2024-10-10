@@ -171,10 +171,11 @@ return {
 			condition = tex_utils.in_mathzone,
 		}
 	),
-
-
-
-
-
+	snippet({trig="''", snippetType="autosnippet"},
+  		fmta("\\text{<>}", i(1)),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),
 }
 
