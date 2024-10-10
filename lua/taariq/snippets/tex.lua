@@ -40,16 +40,26 @@ return {
 	snippet({trig=";a", snippetType="autosnippet"},
   {
     text("\\alpha"),
+  },
+  {
+    condition = tex_utils.in_mathzone,
   }
 ),
 	snippet({trig=";b", snippetType="autosnippet"},
   {
     text("\\beta"),
+  },
+  {
+    condition = tex_utils.in_mathzone,
   }
+
 ),
 	snippet({trig=";g", snippetType="autosnippet"},
   {
     text("\\gamma"),
+  },
+  {
+    condition = tex_utils.in_mathzone,
   }
 ),
 
@@ -73,7 +83,7 @@ return {
 		}
 	),
 	snippet({trig="$$", snippetType="autosnippet"},
-  		fmta("\\(<>\\)<>",
+  		fmta("\\( <> \\)<>",
     		{
 				i(1),
 				i(0),
@@ -95,13 +105,76 @@ return {
 		}
 	),
 
-	snippet({trig="\\i"},
-  {
-    text("\\item "),
-  },
-  {
-	  condition = tex_utils.in_itemize,
-  }
-),
+	snippet({trig="<>", snippetType="autosnippet"},
+  		fmta("\\langle <> \\rangle <>",
+    		{
+				i(1),
+				i(0),
+    		}
+  		),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),
+	snippet({trig="fra", snippetType="autosnippet"},
+  		fmta("\\frac{<>}{<>}",
+    		{
+				i(1),
+				i(2),
+    		}
+  		),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),
+	snippet({trig="set", snippetType="autosnippet"},
+  		fmta("\\{ <> \\}}",
+    		{
+				i(1),
+    		}
+  		),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),
+	snippet({trig="norm", snippetType="autosnippet"},
+  		fmta("\\lVert <> \\rVert",
+    		{
+				i(1),
+    		}
+  		),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),
+	snippet({trig=";R", snippetType="autosnippet"},
+  		text("\\mathbb{R}"),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),
+	snippet({trig=";C", snippetType="autosnippet"},
+  		text("\\mathbb{C}"),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),
+	snippet({trig="in", snippetType="autosnippet"},
+  		text("\\in"),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),
+	snippet({trig="->", snippetType="autosnippet"},
+  		text("\\rightarrow"),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),
+
+
+
+
+
 }
 
