@@ -82,8 +82,8 @@ return {
 			condition = tex_utils.in_text,
 		}
 	),
-	snippet({trig="$$", snippetType="autosnippet"},
-  		fmta("\\( <> \\)<>",
+	snippet({trig="$", snippetType="autosnippet"},
+  		fmta("\\(<>\\)<>",
     		{
 				i(1),
 				i(0),
@@ -92,6 +92,17 @@ return {
 		{
 		}
 	),
+	snippet({trig="cal", snippetType="autosnippet"},
+  		fmta("\\mathcal{<>}",
+    		{
+				i(1),
+    		}
+  		),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),
+
 	snippet({trig="::"},
   		fmta("{{c<>:: <> }}<>",
     		{
@@ -127,8 +138,8 @@ return {
 			condition = tex_utils.in_mathzone,
 		}
 	),
-	snippet({trig="set", snippetType="autosnippet"},
-  		fmta("\\{ <> \\}}",
+	snippet({trig="set"},
+  		fmta("\\{ <> \\}",
     		{
 				i(1),
     		}
@@ -152,7 +163,21 @@ return {
 		{
 			condition = tex_utils.in_mathzone,
 		}
+	),	
+	snippet({trig=";E", snippetType="autosnippet"},
+  		text("\\mathbb{E}"),
+		{
+			condition = tex_utils.in_mathzone,
+		}
 	),
+	snippet({trig=";P", snippetType="autosnippet"},
+  		text("\\mathbb{P}"),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),
+
+
 	snippet({trig=";C", snippetType="autosnippet"},
   		text("\\mathbb{C}"),
 		{
