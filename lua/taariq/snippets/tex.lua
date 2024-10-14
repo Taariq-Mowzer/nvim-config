@@ -172,6 +172,13 @@ return {
 			condition = tex_utils.in_mathzone,
 		}
 	),	
+	snippet({trig=";L", snippetType="autosnippet"},
+  		text("\\mathcal{L}"),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),	
+
 	snippet({trig=";E", snippetType="autosnippet"},
   		text("\\mathbb{E}"),
 		{
