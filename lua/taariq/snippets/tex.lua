@@ -185,6 +185,14 @@ return {
 			condition = tex_utils.in_mathzone,
 		}
 	),
+	snippet({trig=";cE", snippetType="autosnippet"},
+  		fmta("\\mathbb{E}(<> | <>)", {i(1), i(2)}),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),
+
+
 	snippet({trig=";P", snippetType="autosnippet"},
   		text("\\mathbb{P}"),
 		{
