@@ -180,6 +180,13 @@ return {
 			condition = tex_utils.in_mathzone,
 		}
 	),	
+	snippet({trig=";N", snippetType="autosnippet"},
+  		text("\\mathbb{N}"),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),	
+
 	snippet({trig=";L", snippetType="autosnippet"},
   		text("\\mathcal{L}"),
 		{
