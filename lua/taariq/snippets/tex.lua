@@ -62,6 +62,14 @@ return {
     condition = tex_utils.in_mathzone,
   }
 ),
+	snippet({trig=";d", snippetType="autosnippet"},
+  {
+    text("\\partial"),
+  },
+  {
+    condition = tex_utils.in_mathzone,
+  }
+),
 
 	snippet({trig="\\beg", snippetType="autosnippet"},
   		fmta("\\begin{<>}\n    <>\n\\end{<>}",
