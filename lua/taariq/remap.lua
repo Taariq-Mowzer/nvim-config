@@ -9,3 +9,20 @@ vim.opt.splitbelow = true
 vim.opt.ts=4
 vim.opt.sw=4
 vim.opt.smartindent = true
+
+vim.api.nvim_create_user_command('RP', function()
+	local file_ext = vim.fn.expand('%:e')
+
+	local run_cmds = {
+		py = "term python %",
+	}
+
+  	run_cmd = run_cmds[file_ext]
+	
+  	if run_cmd then
+		vim.cmd("vs")
+		vim.cmd(run_cmd)
+	else
+		print("Unsure how to run ." .. file_ext .. " file.")
+  	end
+end, {})
