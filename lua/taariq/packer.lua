@@ -44,6 +44,7 @@ return require('packer').startup(function(use)
 	use ({'lervag/vimtex', tag = 'v2.15'})
 	use ({"micangl/cmp-vimtex", requires = {{'lervag/vimtex'}}})
 	
+	use 'mfussenegger/nvim-dap'
 
 end)
 
