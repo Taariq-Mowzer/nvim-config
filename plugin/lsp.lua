@@ -66,6 +66,7 @@ cmp.setup({
 	 ['<CR>'] = cmp.mapping(function(fallback)
         if luasnip.expandable() then
         	luasnip.expand()
+			return
 		elseif cmp.visible() then
             cmp.confirm({
                 select = false,
