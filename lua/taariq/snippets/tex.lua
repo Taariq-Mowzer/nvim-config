@@ -124,7 +124,7 @@ return {
 		}
 	),
 		snippet(
-		{trig="|", snippetType="autosnippet", wordTrig=false},
+		{trig="abs", snippetType="autosnippet", wordTrig=false},
 		fmta("|<>|", {i(1)}),
 		{
 			condition = tex_utils.in_mathzone,
