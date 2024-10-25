@@ -70,6 +70,15 @@ return {
     condition = tex_utils.in_mathzone,
   }
 ),
+	snippet({trig="oo", snippetType="autosnippet"},
+  {
+    text("\\infty"),
+  },
+  {
+    condition = tex_utils.in_mathzone,
+  }
+),
+
 
 	snippet({trig="\\beg", snippetType="autosnippet"},
   		fmta("\\begin{<>}\n    <>\n\\end{<>}",
