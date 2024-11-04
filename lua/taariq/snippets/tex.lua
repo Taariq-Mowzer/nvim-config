@@ -189,6 +189,13 @@ return {
 			condition = tex_utils.in_mathzone,
 		}
 	),	
+	snippet({trig=";Q", snippetType="autosnippet"},
+  		text("\\mathbb{Q}"),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),	
+
 	snippet({trig=";N", snippetType="autosnippet"},
   		text("\\mathbb{N}"),
 		{
