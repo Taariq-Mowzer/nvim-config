@@ -183,6 +183,13 @@ return {
 			condition = tex_utils.in_mathzone,
 		}
 	),
+	snippet({trig=";Z", snippetType="autosnippet"},
+  		text("\\mathbb{Z}"),
+		{
+			condition = tex_utils.in_mathzone,
+		}
+	),	
+
 	snippet({trig=";R", snippetType="autosnippet"},
   		text("\\mathbb{R}"),
 		{
