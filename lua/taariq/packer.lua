@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
      requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-	use {"windwp/nvim-autopairs"} 
+	--use {"windwp/nvim-autopairs"} 
 
   use({
 	"L3MON4D3/LuaSnip",
