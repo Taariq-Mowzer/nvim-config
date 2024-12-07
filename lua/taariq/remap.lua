@@ -26,3 +26,9 @@ vim.api.nvim_create_user_command('RP', function()
 		print("Unsure how to run ." .. file_ext .. " file.")
   	end
 end, {})
+
+vim.api.nvim_create_user_command("Spellcheck", function()
+  vim.opt_local.spell = true
+  vim.opt_local.spelllang = "en_gb"
+end, {})
+
