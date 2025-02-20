@@ -32,3 +32,17 @@ vim.api.nvim_create_user_command("Spellcheck", function()
   vim.opt_local.spelllang = "en_gb"
 end, {})
 
+vim.api.nvim_create_augroup("PersistentViews", { clear = true })
+
+vim.api.nvim_create_autocmd({"BufWinLeave", "BufWinEnter"}, {
+    group = "PersistentViews",
+    pattern = "*.*",
+    callback = function(args)
+        if args.event == "BufWinLeave" then
+            vim.cmd("mkview")
+        elseif args.event == "BufWinEnter" then
+            vim.cmd("silent! loadview")
+        end
+    end,
+})
+
