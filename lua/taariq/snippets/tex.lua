@@ -134,7 +134,7 @@ return {
 	),
 		snippet(
 		{trig="abs", snippetType="autosnippet", wordTrig=false},
-		fmta("|<>|", {i(1)}),
+		fmta("\\lvert <> \\rvert ", {i(1)}),
 		{
 			condition = tex_utils.in_mathzone,
 		}
