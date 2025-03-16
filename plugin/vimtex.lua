@@ -6,3 +6,10 @@ vim.g.vimtex_quickfix_ignore_filters = {"Underfull", "Overfull", "LaTeX Font War
 vim.g.vimtex_compiler_latexmk = {
     aux_dir = ".latex-tmp", -- create a directory called aux that will contain all the auxiliary files
 }
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"tex", "bib"},
+    callback = function()
+		vim.opt_local.foldmethod = "expr"
+		vim.opt_local.foldexpr = "vimtex#fold#level(v:lnum)"
+    end,
+})
