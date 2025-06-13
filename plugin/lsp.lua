@@ -99,12 +99,15 @@ cmp.setup({
 })
 
  -- If you want insert `(` after select function or method item
---auto_pairs = require('nvim-autopairs')
---auto_pairs.setup()
---Rule = require('nvim-autopairs.rule')
+auto_pairs = require('nvim-autopairs')
+auto_pairs.setup({
+	disable_filetype = {"tex"}
+})
+Rule = require('nvim-autopairs.rule')
 
---local cmp_autopairs = require('nvim-autopairs.completion.cmp')
---cmp.event:on(
---  'confirm_done',
---  cmp_autopairs.on_confirm_done()
---)
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+

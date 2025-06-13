@@ -34,8 +34,23 @@ tex_utils.in_tikz = function()  -- TikZ picture environment detection
     return tex_utils.in_env('tikzpicture')
 end
 
+local function auto_pair(open, close)
+	auto_complete_snippet = snippet(
+		{trig=open, snippetType="autosnippet", wordTrig=false},
+		fmta(
+			open .. "<>" .. close .. "<>",
+			{i(1), i(0)}
+		)
+	)
+
+	return auto_complete_snippet
+end
 
 return {	
+	auto_pair("(", ")"),
+	auto_pair("[", "]"),
+	auto_pair("{", "}"),
+	auto_pair('"', '"'),
 -- Examples of Greek letter snippets, autotriggered for efficiency
 	snippet({trig=";a", snippetType="autosnippet"},
   {
