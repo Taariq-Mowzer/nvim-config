@@ -19,9 +19,12 @@ vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Yank to system clipbo
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.opt.ts=4
-vim.opt.sw=4
+vim.opt.ts=8
+vim.opt.sw=8
 vim.opt.smartindent = true
+
+vim.opt.list = true
+vim.opt.listchars = { tab = ">-" }
 
 vim.api.nvim_create_user_command('RP', function()
 	local file_ext = vim.fn.expand('%:e')
