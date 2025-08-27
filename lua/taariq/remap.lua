@@ -27,6 +27,9 @@ vim.api.nvim_create_user_command('RP', function()
   	end
 end, {})
 
+vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
+
+
 vim.api.nvim_create_user_command("Spellcheck", function()
   vim.opt_local.spell = true
   vim.opt_local.spelllang = "en_gb"

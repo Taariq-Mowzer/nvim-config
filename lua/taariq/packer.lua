@@ -18,7 +18,6 @@ return require('packer').startup(function(use)
 
   use ('tpope/vim-fugitive')
 
-  use({'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'})
   use({'neovim/nvim-lspconfig'})
   use({'hrsh7th/nvim-cmp'})
   use({'hrsh7th/cmp-nvim-lsp'})
@@ -31,8 +30,6 @@ return require('packer').startup(function(use)
      requires = { {'nvim-lua/plenary.nvim'} }
   }
 
- use {"windwp/nvim-autopairs"} 
-
   use({
 	"L3MON4D3/LuaSnip",
 	-- follow latest release.
@@ -43,7 +40,7 @@ return require('packer').startup(function(use)
 
 	use ({'lervag/vimtex', tag = 'v2.15'})
 	use ({"micangl/cmp-vimtex", requires = {{'lervag/vimtex'}}})
-	
+
 	use 'mfussenegger/nvim-dap'
 
 end)

@@ -1,52 +1,44 @@
-local lsp_zero = require('lsp-zero')
-
--- lsp_attach is where you enable features that only work
--- if there is a language server active in the file
-local lsp_attach = function(client, bufnr)
-  local opts = {buffer = bufnr}
-  
-  vim.api.nvim_set_keymap(
-	  'n', '<Leader>d', ':lua vim.diagnostic.open_float()<CR>',
-	  { noremap = true, silent = true}
-  )
-  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-  vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-  vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-  vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-  vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-  vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-  vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-  vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-  vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-  vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-end
-
-lsp_zero.extend_lspconfig({
-  sign_text = true,
-  lsp_attach = lsp_attach,
-  capabilities = require('cmp_nvim_lsp').default_capabilities(),
-})
-
-local lsp_configs = {
-	basedpyright = { settings = { basedpyright = {
-		analysis = {autoImportCompletions = false, typeCheckingMode = 'standard' },
-	}}},
-}
-
-
+-- Install LSPs
 require("mason").setup()
-require('mason-lspconfig').setup({
-  -- Replace the language servers listed here 
-  -- with the ones you want to install
-  ensure_installed = {'basedpyright'},
-  handlers = {
-    function(server_name)
-      local lsp_config = lsp_configs[server_name]
-      if lsp_config == nil then lsp_config = {} end
-      require('lspconfig')[server_name].setup(lsp_config)
-    end,
-  },
+require("mason-lspconfig").setup({
+	ensure_installed = {'lua_ls', 'basedpyright'},
+	automatic_enable = false,
 })
+
+-- Setup LSPs
+vim.lsp.config('luals', {
+  cmd = {'lua-language-server'},
+  filetypes = {'lua'},
+  root_markers = {'.luarc.json', '.luarc.jsonc'},
+})
+
+vim.lsp.enable('luals')
+
+vim.lsp.config('bpyright', {
+	cmd = {'basedpyright-langserver', '--stdio'},
+	filetypes = {'python'},
+	root_markers = {'.git'},
+	settings = {
+		basedpyright = {
+			analysis = {
+				"basic"
+			}
+		}
+	}
+})
+
+vim.lsp.enable('bpyright')
+
+
+-- Diagnostic should have rounded borders
+vim.o.winborder = 'rounded'
+
+-- Autocomplete maps
+vim.api.nvim_set_keymap(
+  'n', '<Leader>d', ':lua vim.diagnostic.open_float()<CR>',
+  { noremap = true, silent = true}
+)
+
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
@@ -101,17 +93,3 @@ cmp.setup({
    ["<C-e>"] = cmp.mapping.abort(),         -- Close completion menu
   }),
 })
-
- -- If you want insert `(` after select function or method item
-auto_pairs = require('nvim-autopairs')
-auto_pairs.setup({
-	disable_filetype = {"tex"}
-})
-Rule = require('nvim-autopairs.rule')
-
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
-
