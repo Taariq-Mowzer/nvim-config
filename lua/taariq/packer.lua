@@ -43,5 +43,7 @@ return require('packer').startup(function(use)
 
 	use 'mfussenegger/nvim-dap'
 
+	use 'kshenoy/vim-signature'
+
 end)
 

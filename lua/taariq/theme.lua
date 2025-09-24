@@ -6,4 +6,4 @@ vim.api.nvim_set_hl(0, "NormalNC", {guibg=NONE})
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.signcolumn = 'number'
+vim.opt.signcolumn = 'yes'
