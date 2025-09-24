@@ -1,13 +1,15 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>cd", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>sv", vim.cmd.vsplit)
-vim.keymap.set("n", "<leader>sh", vim.cmd.split)
+vim.keymap.set("n", "<leader>=", vim.cmd.vsplit)
+vim.keymap.set("n", "<leader>-", vim.cmd.split)
 
 -- Move between splits with <leader> + h/j/k/l
 vim.keymap.set("n", "<leader>h", "<C-w>h")
 vim.keymap.set("n", "<leader>j", "<C-w>j")
 vim.keymap.set("n", "<leader>k", "<C-w>k")
 vim.keymap.set("n", "<leader>l", "<C-w>l")
+-- Move to next split with <leader> + o
+vim.keymap.set("n", "<leader>o", "<C-w>w")
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -33,7 +35,25 @@ vim.api.nvim_create_user_command('RP', function()
   	end
 end, {})
 
+-- From insert mode jk goes into normal mode
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
+-- From insert mode kj moves one to the right
+vim.api.nvim_set_keymap('i', 'kj', '<Right>', { noremap = true, silent = true })
+
+-- Timoutlen for key combos is 200 ms in insert mode
+vim.api.nvim_create_autocmd("InsertEnter", {
+    pattern = "*",
+    callback = function()
+        vim.opt.timeoutlen = 200
+    end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+    pattern = "*",
+    callback = function()
+        vim.opt.timeoutlen = 1000
+    end,
+})
 
 
 vim.api.nvim_create_user_command("Spellcheck", function()
