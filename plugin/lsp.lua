@@ -21,8 +21,10 @@ vim.lsp.config('bpyright', {
 	settings = {
 		basedpyright = {
 			analysis = {
-				"basic"
-			}
+				typeCheckingMode = "basic",
+				autoImportCompletions= false,
+				--reportUnknownMemberType = "none",
+			},
 		}
 	}
 })
