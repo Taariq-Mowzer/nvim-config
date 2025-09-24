@@ -123,3 +123,16 @@ cmp.setup({
    ["<C-e>"] = cmp.mapping.abort(),         -- Close completion menu
   }),
 })
+
+-- If you want `(` after select function or method item
+local auto_pairs = require('nvim-autopairs')
+auto_pairs.setup({
+	disable_filetype = {"tex"}
+})
+local Rule = require('nvim-autopairs.rule')
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+'confirm_done',
+	cmp_autopairs.on_confirm_done()
+)
