@@ -31,6 +31,12 @@ vim.lsp.config('bpyright', {
 
 vim.lsp.enable('bpyright')
 
+vim.lsp.config('clang', {
+	cmd = {'clangd'},
+	filetypes= {'c', 'cpp'},
+})
+vim.lsp.enable('clang')
+
 
 -- Diagnostic should have rounded borders
 vim.o.winborder = 'rounded'
