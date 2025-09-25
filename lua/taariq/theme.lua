@@ -7,3 +7,5 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.opt.signcolumn = 'yes'
+
+vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'NONE' })
