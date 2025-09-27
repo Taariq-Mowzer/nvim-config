@@ -5,6 +5,8 @@ require("mason-lspconfig").setup({
 	automatic_enable = false,
 })
 
+-- LSP maps
+vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 -- Setup LSPs
 vim.lsp.config('luals', {
   cmd = {'lua-language-server'},
