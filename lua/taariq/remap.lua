@@ -11,6 +11,11 @@ vim.keymap.set("n", "<leader>l", "<C-w>l")
 -- Move to next split with <leader> + o
 vim.keymap.set("n", "<leader>o", "<C-w>w")
 
+-- Paste from clipboard with <leader>p
+vim.keymap.set({"n", "v"}, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+-- Copy to clipboard with <leader>y
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
+
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
