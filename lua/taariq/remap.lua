@@ -26,6 +26,8 @@ vim.opt.smartindent = true
 vim.opt.list = true
 vim.opt.listchars = { tab = ">-" }
 
+vim.g.netrw_sizestyle = "h"
+
 vim.api.nvim_create_user_command('RP', function()
 	local file_ext = vim.fn.expand('%:e')
 
