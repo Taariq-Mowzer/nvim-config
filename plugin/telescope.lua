@@ -40,4 +40,22 @@ buffer_searcher = function()
     }
 end
 
-vim.keymap.set('n', '<leader>ls', buffer_searcher, {})
+local function reverse(tab)
+    for i = 1, math.floor(#tab/2), 1 do
+        tab[i], tab[#tab-i+1] = tab[#tab-i+1], tab[i]
+    end
+    return tab
+end
+
+
+vim.api.nvim_create_user_command('LS',  function()
+	local output = vim.api.nvim_exec("ls t", true)
+	local lines = vim.split(output, "\n")
+	lines = reverse(lines)
+	local output_reversed = table.concat(lines, "\n")
+	vim.notify(output_reversed)
+end, {})
+	
+vim.keymap.set('n', '<leader>bb', buffer_searcher, {})
+--vim.keymap.set('n', '<leader>bl', ':ls t<CR>:b ', { noremap = true })
+vim.keymap.set('n', '<leader>bl', ':LS<CR>:b ', { noremap = true })
