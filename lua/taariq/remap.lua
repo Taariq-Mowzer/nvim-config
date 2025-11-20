@@ -23,6 +23,9 @@ vim.opt.ts=4
 vim.opt.sw=4
 vim.opt.smartindent = true
 
+-- Use git grep instead of normal grep
+vim.opt.grepprg = "git grep -n"
+
 vim.api.nvim_create_user_command('RP', function()
 	local file_ext = vim.fn.expand('%:e')
 
