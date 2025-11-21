@@ -39,6 +39,19 @@ vim.lsp.config('clang', {
 })
 vim.lsp.enable('clang')
 
+-- zig
+vim.lsp.config('zig', {
+	cmd = {'zls'},
+	filetypes = {'zig'},
+	root_markers = {'.git'},
+	settings = {
+		--enable_build_on_save = true,
+
+	}
+})
+
+vim.lsp.enable('zig')
+
 
 -- Diagnostic should have rounded borders
 vim.o.winborder = 'rounded'
