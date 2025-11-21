@@ -67,7 +67,7 @@ vim.diagnostic.config({
 
 -- Autocomplete maps
 vim.api.nvim_set_keymap(
-  'n', '<Leader>d', ':lua vim.diagnostic.open_float()<CR>',
+  'n', '<leader>w', ':lua vim.diagnostic.open_float()<CR>',
   { noremap = true, silent = true}
 )
 
