@@ -31,6 +31,7 @@ vim.api.nvim_create_user_command('RP', function()
 
 	local run_cmds = {
 		py = "term python %",
+		zig = "term zig run %"
 	}
 
   	run_cmd = run_cmds[file_ext]
